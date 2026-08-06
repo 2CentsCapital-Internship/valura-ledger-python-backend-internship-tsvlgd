@@ -52,9 +52,9 @@ python client.py --key <YOUR_KEY> --mode practice
 To run a highly automated background script (useful for massive 4000+ event `submission` or `final` rounds without sitting at the terminal):
 ```bash
 chmod +x run_arena.sh
-nohup ./run_arena.sh > arena_runner.log 2>&1 &
+VALURA_API_KEY="ak_your_key_here" nohup ./run_arena.sh > arena_runner.log 2>&1 &
 ```
-*Note: We bypassed the interactive `input()` prompt in `client.py` specifically so it can run autonomously in the background.*
+*Note: `run_arena.sh` is configured to run `submission` mode first, and upon completion, automatically transition into `final` mode. Logs for each mode are piped to `submission.log` and `final.log` respectively.*
 
 ---
 
