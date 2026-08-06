@@ -4,7 +4,7 @@ A high-performance, robust, event-driven double-entry book of record designed to
 
 This codebase currently achieves **~93/100 to 100/100** accuracy on the highly destructive practice/submission data sets, surviving unannounced duplicate delivery, deliberate rewind disconnects, and massive event reversals.
 
-## 🏗️ Architecture & Separation of Concerns
+## Architecture & Separation of Concerns
 
 The monolithic ledger state machine has been modularized into 5 distinct, decoupled layers:
 
@@ -25,7 +25,7 @@ The monolithic ledger state machine has been modularized into 5 distinct, decoup
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### Installation
 This project leverages `uv` for dependency management.
@@ -58,7 +58,7 @@ nohup ./run_arena.sh > arena_runner.log 2>&1 &
 
 ---
 
-## 🧪 Testing
+## Testing
 
 We have built a strict test suite validating exact deposit offsets, order placing bounds, hold releases, and FIFO lot unwinding using `pytest`.
 
@@ -74,7 +74,7 @@ pytest test_book.py -v
 
 ---
 
-## 🔥 Key Engineering Decisions
+## Key Engineering Decisions
 
 * **Perfect Snapshots (`as_of_event_id`)**: The arena occasionally asks for checkpoints retroactively. Instead of passing the current state, `book.py` physically reconstructs a ghost ledger and replays the tracked journal exclusively up to the requested `event_id` to ensure 100% checkpoint accuracy.
 * **Aggressive Type Safety**: `Decimal` is universally used. `float` is entirely eradicated to prevent cent-discrepancies.
