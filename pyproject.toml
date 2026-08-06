@@ -1,0 +1,9 @@
+[project]
+name = "valura-ledger"
+version = "0.1.0"
+description = "Double-entry accounting ledger engine for Valura Ledger Arena"
+requires-python = ">=3.12"
+dependencies = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+]
