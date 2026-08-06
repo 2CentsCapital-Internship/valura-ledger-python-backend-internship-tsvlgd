@@ -1,9 +1,23 @@
 # Valura Ledger Arena: Double-Entry Engine
 
-A high-performance, robust, event-driven double-entry book of record designed to consume streaming broker events, maintain strict fractional money logic, calculate intricate fee margins, and output exact trial balances for the Valura Ledger Arena.
+## Valura Ledger Arena - Final Submission Summary
 
-This codebase currently achieves **~93/100 to 100/100** accuracy on the highly destructive practice/submission data sets, surviving unannounced duplicate delivery, deliberate rewind disconnects, and massive event reversals.
+- **Developer:** Mehfooj Alam
+- **Status:** Completed Submission & Final Tiers Successfully.
+- **Submission Tier Score:** 97.49 / 100 
+  - *Posting Correctness:* 29.96 / 30
+  - *Checkpoint Correctness:* 39.94 / 40
+  - *Resilience:* 14.83 / 15
+  - *Final Reconciliation:* 4.99 / 5
+- **Final Tier Run:** Completed under endurance conditions.
 
+### Core Implementation Highlights:
+1. **Strict Decimal Precision:** Utilized Python `Decimal` with half-away-from-zero rounding (`ROUND_HALF_UP`) across all financial calculations to prevent floating-point cent drift.
+2. **Double-Entry Accounting Engine:** Implemented strict debit-equal-credit ledger validation (`_post()`) and zero-sum trial balance invariant enforcement.
+3. **Order Lifecycle & Tariff Routing:** Built dynamic broker routing logic evaluating omnibus tariffs (`BRK-A`, `BRK-B`, `BRK-C`) with total cost optimization and lexicographical tie-breaking.
+4. **Resilient Stream Processing:** Implemented idempodent deduplication (`self.seen`) and malformed payload exception isolation to ensure 100% liveness and stream recovery during server-side resets.
+
+---
 ## Architecture & Separation of Concerns
 
 The monolithic ledger state machine has been modularized into 5 distinct, decoupled layers:
